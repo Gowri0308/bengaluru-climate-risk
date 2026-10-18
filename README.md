@@ -38,8 +38,8 @@ bengaluru-climate-risk/
 | 1. Data download | `data-prep/01_data_download.ipynb` | Done |
 | 2. Flood susceptibility model | `data-prep/02_flood_model.ipynb` | Done |
 | 3. Extreme-heat model | `data-prep/03_heat_model.ipynb` | Done |
-| 4. 2022 flood from Sentinel-1 | `04_flood_2022_sar.ipynb` | Next |
-| 5. Validation | `05_validation.ipynb` | Planned |
+| 4. 2022 flood from Sentinel-1 | `data-prep/04_flood_2022_sar.ipynb` | Done |
+| 5. Validation | `05_validation.ipynb` | Next |
 | 6. GeoServer publishing | `geoserver/` | Planned |
 | 7. Web app and scoring | `web/`, `server/`, `database/` | Planned |
 
