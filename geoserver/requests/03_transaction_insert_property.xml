@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  WFS-T Insert: save one scored property into the "properties" layer.
+  The Node.js API sends one Insert per property (or many Inserts in one Transaction).
+
+  POST to: http://localhost/geoserver/climaterisk/wfs   (Content-Type: text/xml)
+  Needs a user with write access to climaterisk:properties (HTTP Basic auth),
+  as set up in docs/geoserver_setup.md, step 8.
+  The geometry is written in GML: gml:Point with lon lat for EPSG:4326.
+-->
+<wfs:Transaction service="WFS" version="1.1.0"
+    xmlns:wfs="http://www.opengis.net/wfs"
+    xmlns:gml="http://www.opengis.net/gml"
+    xmlns:climaterisk="http://climaterisk">
+  <wfs:Insert>
+    <climaterisk:properties>
+      <climaterisk:geom>
+        <gml:Point srsName="EPSG:4326">
+          <gml:pos>77.6762 12.9260</gml:pos>
+        </gml:Point>
+      </climaterisk:geom>
+      <climaterisk:portfolio_id>1</climaterisk:portfolio_id>
+      <climaterisk:property_id>P-0042</climaterisk:property_id>
+      <climaterisk:loan_value>8500000</climaterisk:loan_value>
+      <climaterisk:flood_class>3</climaterisk:flood_class>
+      <climaterisk:heat_class>2</climaterisk:heat_class>
+      <climaterisk:risk_score>2.6</climaterisk:risk_score>
+      <climaterisk:risk_level>High</climaterisk:risk_level>
+    </climaterisk:properties>
+  </wfs:Insert>
+</wfs:Transaction>

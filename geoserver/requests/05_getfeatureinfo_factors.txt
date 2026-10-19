@@ -1,0 +1,19 @@
+WMS GetFeatureInfo: the raw factor values at a clicked point (for the "why is this High?" popup).
+Reads all six bands of flood_factor_values (hand_m, slope_deg, dist_lake_m, dist_drain_m, twi, builtup_share).
+Leaflet builds this URL from the click position; this example is a 101 x 101 pixel window around Bellandur.
+
+http://localhost/geoserver/climaterisk/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo
+  &LAYERS=climaterisk:flood_factor_values&QUERY_LAYERS=climaterisk:flood_factor_values
+  &SRS=EPSG:4326&BBOX=77.6712,12.9210,77.6812,12.9310&WIDTH=101&HEIGHT=101&X=50&Y=50
+  &INFO_FORMAT=application/json
+
+(Put it on one line when you paste it into the browser.)
+
+GeoServer names the bands Band1..Band6 in the JSON answer. They are, in order:
+  Band1 = hand_m          height above nearest drainage (m)
+  Band2 = slope_deg       slope (degrees)
+  Band3 = dist_lake_m     distance to the nearest lake (m)
+  Band4 = dist_drain_m    distance to the nearest drain (m)
+  Band5 = twi             topographic wetness index
+  Band6 = builtup_share   share of the 30 m cell that is built-up (0-1)
+-9999 means "no data" (outside the city).

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  WFS-T Delete: remove every property of one portfolio (used when a portfolio
+  is re-uploaded or deleted in the web app).
+  POST to: http://localhost/geoserver/climaterisk/wfs   (Basic auth, as for 03)
+-->
+<wfs:Transaction service="WFS" version="1.1.0"
+    xmlns:wfs="http://www.opengis.net/wfs"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns:climaterisk="http://climaterisk">
+  <wfs:Delete typeName="climaterisk:properties">
+    <ogc:Filter>
+      <ogc:PropertyIsEqualTo>
+        <ogc:PropertyName>portfolio_id</ogc:PropertyName>
+        <ogc:Literal>1</ogc:Literal>
+      </ogc:PropertyIsEqualTo>
+    </ogc:Filter>
+  </wfs:Delete>
+</wfs:Transaction>

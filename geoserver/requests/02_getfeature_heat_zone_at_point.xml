@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  WFS GetFeature: which heat zone contains this point?  (same pattern as 01)
+  POST to: http://localhost/geoserver/climaterisk/wfs
+-->
+<wfs:GetFeature service="WFS" version="1.1.0"
+    outputFormat="application/json"
+    xmlns:wfs="http://www.opengis.net/wfs"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns:gml="http://www.opengis.net/gml"
+    xmlns:climaterisk="http://climaterisk">
+  <wfs:Query typeName="climaterisk:heat_zones">
+    <ogc:PropertyName>risk_class</ogc:PropertyName>
+    <ogc:PropertyName>risk_level</ogc:PropertyName>
+    <ogc:PropertyName>mean_lst_c</ogc:PropertyName>
+    <ogc:Filter>
+      <ogc:Intersects>
+        <ogc:PropertyName>geom</ogc:PropertyName>
+        <gml:Point srsName="EPSG:4326">
+          <gml:pos>77.6762 12.9260</gml:pos>
+        </gml:Point>
+      </ogc:Intersects>
+    </ogc:Filter>
+  </wfs:Query>
+</wfs:GetFeature>
