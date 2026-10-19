@@ -63,8 +63,9 @@ $ctx = stream_context_create(['http' => [
     'timeout' => 120,
     'ignore_errors' => true,      // also return GeoServer's error documents
 ]]);
-$response = @file_get_contents($cfg['geoserver_wfs'], false, $ctx);
-if ($response === false) fail(502, 'Could not reach GeoServer at ' . $cfg['geoserver_wfs'] . '. Is it running?');
+$wfsUrl = $cfg['geoserver_wfs'] ?? (rtrim($cfg['geoserver'] ?? 'http://localhost:8080/geoserver', '/') . '/' . $cfg['workspace'] . '/wfs');
+$response = @file_get_contents($wfsUrl, false, $ctx);
+if ($response === false) fail(502, 'Could not reach GeoServer at ' . $wfsUrl . '. Is it running?');
 
 if (isset($http_response_header[0]) && preg_match('#\s(\d{3})\s#', $http_response_header[0], $m)) http_response_code((int)$m[1]);
 echo $response;

@@ -1,7 +1,9 @@
 // Settings shared by every page. Change these if your setup differs.
 const CONFIG = {
-  // GeoServer, reached through the Apache proxy (same address as the pages, so no CORS errors)
-  geoserver: '/geoserver',
+  // GeoServer, reached through api/gs.php, which forwards requests to http://localhost:8080/geoserver.
+  // Same address as the pages, so no CORS errors and no Apache proxy setup.
+  // (If you set up the Apache proxy in geoserver/apache/, you can use '/geoserver' instead.)
+  geoserver: 'api/gs.php',
   workspace: 'climaterisk',
   namespaceUri: 'http://climaterisk',
 

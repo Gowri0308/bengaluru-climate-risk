@@ -15,7 +15,7 @@ On 4 to 5 September 2022, overflowing lakes and stormwater drains flooded large 
 | Spatial analysis | Python (geopandas, rasterio, osmnx, numpy), Google Earth Engine, Google Colab |
 | Publishing | GeoServer: WMS, WFS, WFS-T; SLD styles; GML |
 | Web app | Leaflet, HTML/CSS/JavaScript, Chart.js, PapaParse; talks to GeoServer only through WMS, WFS (XML filters, GML) and WFS-T |
-| Hosting | XAMPP Apache (static pages + reverse proxy to GeoServer) and one PHP file guarding WFS-T writes |
+| Hosting | XAMPP Apache with two small PHP files: a read-only forwarder to GeoServer (same origin, no CORS) and a guard for WFS-T writes |
 
 ## Project structure
 
@@ -29,7 +29,7 @@ bengaluru-climate-risk/
 │   └── apache/       # XAMPP Apache reverse-proxy config
 ├── web/              # the web app (copy into xampp/htdocs as "climaterisk")
 │   ├── js/           # config, OGC request helpers, one script per page
-│   ├── api/wfst.php  # WFS-T guard: adds the GeoServer password server-side
+│   ├── api/          # gs.php: read-only forwarder to GeoServer; wfst.php: WFS-T guard
 │   └── lib/          # Leaflet, Chart.js, PapaParse (bundled, no CDN needed)
 └── docs/             # setup guides
 ```

@@ -1,6 +1,6 @@
 # Phase 7: Running the web app
 
-The web app is four static pages (HTML, CSS, JavaScript with Leaflet) that talk to GeoServer with OGC standards, plus one small PHP file that guards WFS-T writes. XAMPP's Apache hosts it. No database and no Node.js.
+The web app is four static pages (HTML, CSS, JavaScript with Leaflet) that talk to GeoServer with OGC standards, plus two small PHP files: `api/gs.php` forwards map and feature requests to GeoServer (so the browser sees one address and no CORS errors), and `api/wfst.php` guards WFS-T writes. XAMPP's Apache hosts it, with no Apache configuration changes. No database and no Node.js.
 
 | Page | What it does | OGC requests |
 | --- | --- | --- |
@@ -21,9 +21,9 @@ The web app is four static pages (HTML, CSS, JavaScript with Leaflet) that talk 
 
 **3. Add the sample portfolio.** Copy `C:\climaterisk\data\sample_portfolio.csv` into `C:\xampp\htdocs\climaterisk\data\`.
 
-**4. Apache proxy.** Follow the comments at the top of `geoserver/apache/climaterisk-proxy.conf`: enable two modules in `httpd.conf`, copy the file to `conf\extra\`, and add one `Include` line.
+**4. Start Apache** in the XAMPP Control Panel (keep Tomcat off), then open **http://localhost/climaterisk/**
 
-**5. Start Apache** in the XAMPP Control Panel (keep Tomcat off), then open **http://localhost/climaterisk/**
+That's all: `api/gs.php` forwards the WMS and WFS requests to GeoServer at `http://localhost:8080/geoserver` (change `'geoserver'` in `config.php` if yours runs elsewhere). An Apache reverse proxy (`geoserver/apache/climaterisk-proxy.conf`) is an optional alternative; if you set it up, change `geoserver` in `js/config.js` to `'/geoserver'`.
 
 ## Try it
 1. **Risk map:** switch hazard layers; click a spot in Bellandur; the popup shows its classes and why.
@@ -49,10 +49,11 @@ GeoServer's own data rule (`climaterisk.properties.w = ROLE_EDITOR`) is a second
 
 | Problem | Fix |
 | --- | --- |
-| Maps are empty, `/geoserver/...` requests fail (404/502) | The Apache proxy isn't active: check step 4 and restart Apache; check GeoServer is running |
+| Maps are empty; `api/gs.php/...` requests fail with 502 | GeoServer isn't running, or `'geoserver'` in `config.php` points to the wrong address |
+| Maps are empty; `api/gs.php/...` returns 404 | The folder isn't served by Apache (open `http://localhost/climaterisk/`, not the file directly) |
 | Map works, saving fails: `api/config.php is missing` | Do step 2 |
 | Saving fails: `properties is read-only` | The password in `config.php` doesn't match `API_PASSWORD`; or rerun `setup_geoserver.py` |
-| Saving fails: `Could not reach GeoServer` | GeoServer isn't running on port 8080, or `geoserver_wfs` in `config.php` is wrong |
+| Saving fails: `Could not reach GeoServer` | GeoServer isn't running on port 8080, or `'geoserver'` in `config.php` is wrong |
 | PHP code shows up as text | You opened the file directly (`file:///...`): use `http://localhost/climaterisk/` |
 | "Use the sample portfolio" says not found | Do step 3 |
 | Every property is "Unscored" | The CSV's latitude and longitude columns are swapped, or the points are outside Bengaluru |
