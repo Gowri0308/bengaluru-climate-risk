@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor version="1.0.0"
+    xmlns="http://www.opengis.net/sld"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>boundary_style</Name>
+    <UserStyle>
+      <Name>boundary_style</Name>
+      <Title>City boundary</Title>
+      <Abstract>BBMP boundary as a dark outline, no fill.</Abstract>
+      <FeatureTypeStyle>
+        <Rule>
+          <PolygonSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#1f2328</CssParameter>
+              <CssParameter name="stroke-width">1.6</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>

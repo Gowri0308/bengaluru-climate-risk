@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  WFS GetFeature: which flood zone contains this point?
+  Used by the Node.js API to give each uploaded property its flood class.
+
+  POST to: http://localhost/geoserver/climaterisk/wfs   (Content-Type: text/xml)
+  Axis order: with srsName="EPSG:4326" and WFS 1.1.0, GeoServer reads coordinates
+  as LONGITUDE then LATITUDE. The point below is Bellandur (77.6762 E, 12.9260 N).
+  Intersects (not Contains) also catches a point lying exactly on a zone edge.
+-->
+<wfs:GetFeature service="WFS" version="1.1.0"
+    outputFormat="application/json"
+    xmlns:wfs="http://www.opengis.net/wfs"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns:gml="http://www.opengis.net/gml"
+    xmlns:climaterisk="http://climaterisk">
+  <wfs:Query typeName="climaterisk:flood_zones">
+    <ogc:PropertyName>risk_class</ogc:PropertyName>
+    <ogc:PropertyName>risk_level</ogc:PropertyName>
+    <ogc:PropertyName>mean_fri</ogc:PropertyName>
+    <ogc:Filter>
+      <ogc:Intersects>
+        <ogc:PropertyName>geom</ogc:PropertyName>
+        <gml:Point srsName="EPSG:4326">
+          <gml:pos>77.6762 12.9260</gml:pos>
+        </gml:Point>
+      </ogc:Intersects>
+    </ogc:Filter>
+  </wfs:Query>
+</wfs:GetFeature>
