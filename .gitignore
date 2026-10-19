@@ -28,3 +28,6 @@ server/config.local.js
 Thumbs.db
 .vscode/
 .idea/
+
+# Web app secret (WFS-T password)
+web/api/config.php

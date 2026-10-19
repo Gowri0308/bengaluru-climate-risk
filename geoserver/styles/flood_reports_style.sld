@@ -10,7 +10,7 @@
     <UserStyle>
       <Name>flood_reports_style</Name>
       <Title>Reported flooded localities, Sept 2022</Title>
-      <Abstract>News-reported flooded places as dark-blue triangles with name labels at street zoom.</Abstract>
+      <Abstract>News-reported flooded places as dark-blue triangles with their names.</Abstract>
       <FeatureTypeStyle>
         <Rule>
           <Title>Reported flooded</Title>
@@ -24,10 +24,6 @@
               <Size>11</Size>
             </Graphic>
           </PointSymbolizer>
-        </Rule>
-        <Rule>
-          <Title>Labels</Title>
-          <MaxScaleDenominator>60000</MaxScaleDenominator>
           <TextSymbolizer>
             <Label><ogc:PropertyName>name</ogc:PropertyName></Label>
             <Font>

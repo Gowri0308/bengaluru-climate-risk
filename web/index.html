@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Risk Map · Bengaluru Climate Risk Scanner</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood and extreme-heat screening for property loans</small></div>
+  <nav>
+    <a href="index.html" class="active">Risk map</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="validation.html">Validation</a>
+  </nav>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Hazard layer</h2>
+    <div id="hazards"></div>
+    <div class="legend" id="legend"></div>
+    <h2>Overlays</h2>
+    <div id="overlays"></div>
+    <h2>Base map</h2>
+    <div id="basemaps"></div>
+    <h2>How to use</h2>
+    <p>Click anywhere in the city to see its flood and heat class, and the factors behind them.</p>
+    <p class="hint">Layers are drawn live by GeoServer (WMS + SLD). The click runs a WFS GetFeature with a GML point and a WMS GetFeatureInfo.</p>
+  </aside>
+  <div id="map" class="map"></div>
+</div>
+<script src="lib/leaflet/leaflet.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ogc.js"></script>
+<script src="js/common.js"></script>
+<script src="js/map.js"></script>
+</body>
+</html>

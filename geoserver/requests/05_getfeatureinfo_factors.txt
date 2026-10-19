@@ -17,3 +17,7 @@ GeoServer names the bands Band1..Band6 in the JSON answer. They are, in order:
   Band5 = twi             topographic wetness index
   Band6 = builtup_share   share of the 30 m cell that is built-up (0-1)
 -9999 means "no data" (outside the city).
+
+A file with exactly 3 bands (heat_values.tif from an older run of Notebook 03) is treated as an RGB image,
+so its bands come back as RED_BAND, GREEN_BAND, BLUE_BAND (= lst_c, ndvi, n_clear_images). The web app reads
+band values by position, so both namings work.

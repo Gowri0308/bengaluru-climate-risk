@@ -10,13 +10,12 @@
     <UserStyle>
       <Name>heat_risk_style</Name>
       <Title>Heat index</Title>
-      <Abstract>Heat index 0 (coolest) to 1 (hottest, least green); pale yellow to deep red. Nodata -9999 transparent.</Abstract>
+      <Abstract>Heat index 0 (coolest) to 1 (hottest, least green); pale yellow to deep red. Nodata (-9999, set in the GeoTIFF) is not drawn.</Abstract>
       <FeatureTypeStyle>
         <Rule>
           <RasterSymbolizer>
             <Opacity>0.85</Opacity>
             <ColorMap type="ramp">
-              <ColorMapEntry color="#000000" quantity="-9999" label="No data" opacity="0"/>
               <ColorMapEntry color="#fff3b8" quantity="0" label="0 Coolest"/>
               <ColorMapEntry color="#fec65c" quantity="0.25" label="0.25"/>
               <ColorMapEntry color="#fd8a3c" quantity="0.5" label="0.5"/>

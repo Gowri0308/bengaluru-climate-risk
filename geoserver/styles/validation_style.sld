@@ -10,17 +10,15 @@
     <UserStyle>
       <Name>validation_style</Name>
       <Title>Model vs 2022 flood</Title>
-      <Abstract>validation_result.tif: 1 hit, 2 miss, 3 false alarm; 0 other land and 255 nodata transparent.</Abstract>
+      <Abstract>validation_result.tif: 1 hit, 2 miss, 3 false alarm; other land and nodata are not drawn.</Abstract>
       <FeatureTypeStyle>
         <Rule>
           <RasterSymbolizer>
             <Opacity>0.85</Opacity>
             <ColorMap type="values">
-              <ColorMapEntry color="#000000" quantity="0" label="Other land" opacity="0"/>
               <ColorMapEntry color="#1b7837" quantity="1" label="Hit"/>
               <ColorMapEntry color="#d6604d" quantity="2" label="Miss"/>
               <ColorMapEntry color="#f4c26b" quantity="3" label="False alarm"/>
-              <ColorMapEntry color="#000000" quantity="255" label="No data" opacity="0"/>
             </ColorMap>
           </RasterSymbolizer>
         </Rule>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Dashboard · Bengaluru Climate Risk Scanner</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood and extreme-heat screening for property loans</small></div>
+  <nav>
+    <a href="index.html">Risk map</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="validation.html">Validation</a>
+  </nav>
+</header>
+<main class="page">
+  <h1>Portfolio exposure</h1>
+  <p class="lead">How much of a saved portfolio's loan value sits in flood and extreme-heat risk zones. Read live from GeoServer with WFS.</p>
+  <div class="row">
+    <label for="portfolio">Portfolio</label>
+    <select id="portfolio"><option>Loading…</option></select>
+    <button class="btn" id="export" disabled>Download CSV</button>
+    <button class="btn danger" id="delete" disabled>Delete portfolio</button>
+  </div>
+  <div class="status" id="status" hidden></div>
+
+  <div class="grid cols-4" id="kpis"></div>
+
+  <div class="grid cols-2" style="margin-top:16px">
+    <div class="card"><h3>Share of loan value by risk level</h3><div class="chart-box"><canvas id="donut"></canvas></div></div>
+    <div class="card"><h3>Loan value by flood and heat class</h3><div class="chart-box"><canvas id="bars"></canvas></div></div>
+  </div>
+
+  <div class="grid cols-2" style="margin-top:16px">
+    <div class="card"><h3>Where the properties are</h3><div id="map" class="small-map"></div></div>
+    <div class="card"><h3>Largest loans in High-risk locations</h3>
+      <div class="table-wrap"><table><thead><tr><th>Property</th><th class="num">Loan</th><th>Flood</th><th>Heat</th><th class="num">Score</th></tr></thead><tbody id="top"></tbody></table></div>
+    </div>
+  </div>
+</main>
+<script src="lib/chart.umd.js"></script>
+<script src="lib/leaflet/leaflet.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ogc.js"></script>
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 A Web GIS application that tells a bank how much of its property loan book sits in **flood** and **extreme-heat** danger zones in Bengaluru, and checks its flood map against the real **September 2022 Bengaluru floods**.
 
-A user uploads a CSV of property locations. Each property gets a flood score, a heat score and an overall risk level (Low, Medium, High). A dashboard summarises the portfolio, including the headline metric that the Reserve Bank of India's draft climate disclosure framework (February 2024) asks lenders to report: **the share of assets exposed to climate risk**.
+A user uploads a CSV of property locations in the browser. Each property gets a flood score, a heat score and an overall risk level (Low, Medium, High). A dashboard summarises the portfolio, including the headline metric that the Reserve Bank of India's draft climate disclosure framework (February 2024) asks lenders to report: **the share of assets exposed to climate risk**.
 
 ## Why it matters
 
@@ -14,8 +14,8 @@ On 4 to 5 September 2022, overflowing lakes and stormwater drains flooded large 
 | --- | --- |
 | Spatial analysis | Python (geopandas, rasterio, osmnx, numpy), Google Earth Engine, Google Colab |
 | Publishing | GeoServer: WMS, WFS, WFS-T; SLD styles; GML |
-| Application | Node.js (Express), MySQL, XAMPP Apache (reverse proxy) |
-| Front end | Leaflet, HTML/CSS/JavaScript, Chart.js |
+| Web app | Leaflet, HTML/CSS/JavaScript, Chart.js, PapaParse; talks to GeoServer only through WMS, WFS (XML filters, GML) and WFS-T |
+| Hosting | XAMPP Apache (static pages + reverse proxy to GeoServer) and one PHP file guarding WFS-T writes |
 
 ## Project structure
 
@@ -24,11 +24,14 @@ bengaluru-climate-risk/
 ├── data-prep/        # Colab notebooks: data download, flood model, heat model, 2022 flood, validation
 ├── geoserver/
 │   ├── styles/       # SLD style files
-│   └── requests/     # sample WFS GetFeature and WFS-T Transaction XML
-├── web/              # Leaflet pages (copy into xampp/htdocs)
-├── server/           # Node.js + Express API
-├── database/         # MySQL schema
-└── docs/             # report, diagrams, screenshots
+│   ├── requests/     # sample WFS GetFeature and WFS-T Transaction XML
+│   ├── setup_geoserver.py   # publishes everything through the GeoServer REST API
+│   └── apache/       # XAMPP Apache reverse-proxy config
+├── web/              # the web app (copy into xampp/htdocs as "climaterisk")
+│   ├── js/           # config, OGC request helpers, one script per page
+│   ├── api/wfst.php  # WFS-T guard: adds the GeoServer password server-side
+│   └── lib/          # Leaflet, Chart.js, PapaParse (bundled, no CDN needed)
+└── docs/             # setup guides
 ```
 
 ## Progress
@@ -40,8 +43,8 @@ bengaluru-climate-risk/
 | 3. Extreme-heat model | `data-prep/03_heat_model.ipynb` | Done |
 | 4. 2022 flood from Sentinel-1 | `data-prep/04_flood_2022_sar.ipynb` | Done |
 | 5. Validation | `data-prep/05_validation.ipynb` | Done |
-| 6. GeoServer publishing | `geoserver/`, guide in `docs/geoserver_setup.md` | Ready to run |
-| 7. Web app and scoring | `web/`, `server/`, `database/` | Planned |
+| 6. GeoServer publishing | `geoserver/`, guide in `docs/geoserver_setup.md` | Done |
+| 7. Web app and scoring | `web/`, guide in `docs/webapp_setup.md` | Done |
 
 ## Running Notebook 01
 

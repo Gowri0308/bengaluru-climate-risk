@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Portfolio · Bengaluru Climate Risk Scanner</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood and extreme-heat screening for property loans</small></div>
+  <nav>
+    <a href="index.html">Risk map</a>
+    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="validation.html">Validation</a>
+  </nav>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <h2>1. Upload a portfolio</h2>
+    <label class="dropzone" id="dropzone">
+      <input type="file" id="file" accept=".csv" hidden>
+      <strong>Drop a CSV here</strong> or click to choose<br>
+      <span class="hint">Columns: property_id, latitude, longitude, loan_value</span>
+    </label>
+    <div class="row"><button class="btn" id="sample">Use the sample portfolio</button></div>
+    <div class="status" id="status" hidden></div>
+
+    <h2>2. Score with WFS</h2>
+    <p>Each property's flood and heat zone is looked up in GeoServer.</p>
+    <div class="progress"><div id="bar"></div></div>
+    <p class="hint" id="progress-text">Waiting for a file.</p>
+
+    <h2>3. Save with WFS-T</h2>
+    <div class="row"><input type="text" id="pname" placeholder="Portfolio name (optional)"></div>
+    <div class="row"><button class="btn primary" id="save" disabled>Save to GeoServer</button>
+      <a class="btn" id="to-dash" href="dashboard.html" hidden>Open dashboard →</a></div>
+    <p class="hint">Saved as GML features in the <code>properties</code> layer through a WFS-T Transaction.</p>
+
+    <h2>Results</h2>
+    <div id="summary" class="hint">No properties scored yet.</div>
+  </aside>
+  <div class="map" style="display:grid;grid-template-rows:1fr 260px">
+    <div id="map" class="map"></div>
+    <div class="table-wrap" style="max-height:none;border-radius:0;border-width:1px 0 0 0">
+      <table><thead><tr><th>Property</th><th class="num">Loan</th><th>Flood</th><th>Heat</th><th class="num">Score</th><th>Risk level</th></tr></thead>
+        <tbody id="rows"></tbody></table>
+    </div>
+  </div>
+</div>
+<script src="lib/papaparse.min.js"></script>
+<script src="lib/leaflet/leaflet.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ogc.js"></script>
+<script src="js/common.js"></script>
+<script src="js/portfolio.js"></script>
+</body>
+</html>

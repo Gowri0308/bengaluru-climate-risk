@@ -179,8 +179,12 @@ def main():
     # 5. WFS-T: an API user that may write to climaterisk:properties only
     print('\n5. WFS-T security')
     role = 'ROLE_EDITOR'
-    s, t = call('POST', f'/security/roles/role/{role}')
-    step(s in (200, 201) or 'already' in t.lower() or s == 409, f'role {role} ready', t)
+    s, t = call('GET', '/security/roles')
+    if s == 200 and role in json.loads(t).get('roles', []):
+        step(True, f'role {role} already exists')
+    else:
+        s, t = call('POST', f'/security/roles/role/{role}')
+        step(s in (200, 201), f'created role {role}', t)
     s, t = call('POST', '/security/usergroup/users',
                 {'user': {'userName': API_USER, 'password': API_PASSWORD, 'enabled': True}})
     if s in (200, 201):

@@ -10,13 +10,12 @@
     <UserStyle>
       <Name>flood_risk_style</Name>
       <Title>Flood risk index</Title>
-      <Abstract>Flood risk index 1 (safe) to 5 (very flood-prone); cream to navy ramp. Nodata -9999 transparent.</Abstract>
+      <Abstract>Flood risk index 1 (safe) to 5 (very flood-prone); cream to navy ramp. Nodata (-9999, set in the GeoTIFF) is not drawn.</Abstract>
       <FeatureTypeStyle>
         <Rule>
           <RasterSymbolizer>
             <Opacity>0.85</Opacity>
             <ColorMap type="ramp">
-              <ColorMapEntry color="#000000" quantity="-9999" label="No data" opacity="0"/>
               <ColorMapEntry color="#fbf6d9" quantity="1" label="1 Safe"/>
               <ColorMapEntry color="#c4e6b8" quantity="2" label="2"/>
               <ColorMapEntry color="#5fbcc0" quantity="3" label="3"/>

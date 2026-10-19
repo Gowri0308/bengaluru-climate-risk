@@ -16,9 +16,7 @@
           <RasterSymbolizer>
             <Opacity>0.85</Opacity>
             <ColorMap type="values">
-              <ColorMapEntry color="#000000" quantity="0" label="Not flooded" opacity="0"/>
               <ColorMapEntry color="#1f78b4" quantity="1" label="Flooded, Sept 2022"/>
-              <ColorMapEntry color="#000000" quantity="255" label="No data" opacity="0"/>
             </ColorMap>
           </RasterSymbolizer>
         </Rule>
