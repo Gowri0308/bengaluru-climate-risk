@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>September 2022 · Bengaluru Climate Risk Scanner</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood &amp; heat exposure · Property lending</small></div>
+  <nav>
+    <a href="story.html" class="active">September 2022</a>
+    <a href="index.html">Risk map</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="validation.html">Validation</a>
+  </nav>
+</header>
+
+<div class="story">
+  <div class="story-text">
+    <div class="story-intro">
+      <p class="kicker">The case study</p>
+      <h1>The night Bengaluru's lakes overflowed</h1>
+      <p>How a flood on the city's tech corridor became the test for a climate-risk model built for property lenders. Scroll to follow the map.</p>
+    </div>
+
+    <section class="step" data-step="city">
+      <div class="date">4–5 September 2022</div>
+      <h2>A night of torrential rain</h2>
+      <p>After heavy rain on the night of 4 September 2022, large parts of Bengaluru went under water. Offices told staff to work from home and traffic in the east of the city came to a standstill.</p>
+      <p>The city has no major river. What flooded it was its own network of lakes.</p>
+      <p class="source">Reported by Reuters and Deccan Herald.</p>
+    </section>
+
+    <section class="step" data-step="lakes">
+      <div class="date">The setting</div>
+      <h2>A city built on a chain of lakes</h2>
+      <p>Bengaluru sits on a plateau. Rain runs down shallow valleys through a chain of lakes, linked by stormwater drains. When one lake fills, it spills into the drain below and on to the next.</p>
+      <p>Low land beside the lakes and drains floods first. That pattern is what the flood model maps.</p>
+      <div class="key"><span style="--c:#b7c7d6">Lakes</span><span style="--c:#4a90c2">Drains and streams</span></div>
+    </section>
+
+    <section class="step" data-step="orr">
+      <div class="date">The tech corridor</div>
+      <h2>Bellandur and the Outer Ring Road</h2>
+      <p>Six overflowing lakes in the east and south-east flooded at least 75 places and nearly 4,000 homes. Among the worst hit were the Outer Ring Road near Marathahalli, Bellandur and Sarjapur Road.</p>
+      <p>This is where much of the city's office space sits, and where banks hold large property loans.</p>
+      <div class="key"><span style="--c:#c4e6b8">Predicted Low</span><span style="--c:#5fbcc0">Medium</span><span style="--c:#16306b">High</span><span style="--c:#08306b">▲ reported flooded</span></div>
+      <p class="source">Flood counts reported by Deccan Herald.</p>
+    </section>
+
+    <section class="step" data-step="varthur">
+      <div class="date">Downstream</div>
+      <h2>Varthur, at the end of the chain</h2>
+      <p>Water from Bellandur flows on towards Varthur. The model flags the low ground along this route as High flood susceptibility, from terrain, distance to lakes and drains, and how much water gathers there.</p>
+      <p>It did this without being told where the 2022 flood happened.</p>
+    </section>
+
+    <section class="step" data-step="radar">
+      <div class="date">5 September 2022, from orbit</div>
+      <h2>What the radar saw</h2>
+      <p>The Sentinel-1 satellite passed over at the flood peak. Calm water looks dark to radar, so standing water shows up clearly in open ground.</p>
+      <p>Floodwater between buildings is harder: walls bounce the signal back, so the radar caught only the open-water part of the flood. Green cells are where it saw water inside a predicted High or Medium zone.</p>
+      <div class="key"><span style="--c:#1b7837">Hit</span><span style="--c:#d6604d">Miss</span><span style="--c:#f4c26b">Predicted High, dry in 2022</span></div>
+    </section>
+
+    <section class="step" data-step="model">
+      <div class="date">The result</div>
+      <h2>What the model got right</h2>
+      <div class="stat" id="story-patches">6 of 6</div>
+      <p id="story-result">main radar flood patches fell inside the zones the model calls Medium or High flood risk.</p>
+      <p id="story-chance"></p>
+      <p>The same zones now score any property portfolio. <a href="portfolio.html">Upload a portfolio →</a></p>
+    </section>
+  </div>
+  <div id="map" class="story-map"></div>
+</div>
+
+<script src="lib/leaflet/leaflet.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ogc.js"></script>
+<script src="js/common.js"></script>
+<script src="js/validation_numbers.js"></script>
+<script src="js/story.js"></script>
+</body>
+</html>

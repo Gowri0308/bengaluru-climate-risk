@@ -2,7 +2,7 @@
 
 A Web GIS application that tells a bank how much of its property loan book sits in **flood** and **extreme-heat** danger zones in Bengaluru, and checks its flood map against the real **September 2022 Bengaluru floods**.
 
-A user uploads a CSV of property locations in the browser. Each property gets a flood score, a heat score and an overall risk level (Low, Medium, High). A dashboard summarises the portfolio, including the headline metric that the Reserve Bank of India's draft climate disclosure framework (February 2024) asks lenders to report: **the share of assets exposed to climate risk**.
+A user uploads a CSV of property locations in the browser. Each property gets a flood score, a heat score and an overall risk level (Low, Medium, High). A scrolling story page walks through the September 2022 flood, and a dashboard summarises the portfolio, including the headline metric that the Reserve Bank of India's draft climate disclosure framework (February 2024) asks lenders to report: **the share of assets exposed to climate risk**.
 
 ## Why it matters
 

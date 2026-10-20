@@ -9,8 +9,9 @@
 </head>
 <body>
 <header class="topbar">
-  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood and extreme-heat screening for property loans</small></div>
+  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood &amp; heat exposure · Property lending</small></div>
   <nav>
+    <a href="story.html">September 2022</a>
     <a href="index.html">Risk map</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="dashboard.html" class="active">Dashboard</a>
@@ -18,6 +19,7 @@
   </nav>
 </header>
 <main class="page">
+  <p class="kicker">Portfolio report</p>
   <h1>Portfolio exposure</h1>
   <p class="lead">How much of a saved portfolio's loan value sits in flood and extreme-heat risk zones. Read live from GeoServer with WFS.</p>
   <div class="row">
@@ -30,12 +32,12 @@
 
   <div class="grid cols-4" id="kpis"></div>
 
-  <div class="grid cols-2" style="margin-top:16px">
+  <div class="grid cols-2 section">
     <div class="card"><h3>Share of loan value by risk level</h3><div class="chart-box"><canvas id="donut"></canvas></div></div>
     <div class="card"><h3>Loan value by flood and heat class</h3><div class="chart-box"><canvas id="bars"></canvas></div></div>
   </div>
 
-  <div class="grid cols-2" style="margin-top:16px">
+  <div class="grid cols-2 section">
     <div class="card"><h3>Where the properties are</h3><div id="map" class="small-map"></div></div>
     <div class="card"><h3>Largest loans in High-risk locations</h3>
       <div class="table-wrap"><table><thead><tr><th>Property</th><th class="num">Loan</th><th>Flood</th><th>Heat</th><th class="num">Score</th></tr></thead><tbody id="top"></tbody></table></div>

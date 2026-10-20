@@ -9,8 +9,9 @@
 </head>
 <body>
 <header class="topbar">
-  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood and extreme-heat screening for property loans</small></div>
+  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood &amp; heat exposure · Property lending</small></div>
   <nav>
+    <a href="story.html">September 2022</a>
     <a href="index.html">Risk map</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="dashboard.html">Dashboard</a>
@@ -18,16 +19,17 @@
   </nav>
 </header>
 <main class="page">
+  <p class="kicker">Model validation</p>
   <h1>Model vs the September 2022 flood</h1>
   <p class="lead">Predicted flood classes compared with the flood Sentinel-1 radar saw at the peak (5 September 2022) and the localities reported flooded in the news.</p>
   <div class="grid cols-4" id="numbers"></div>
-  <div class="grid cols-2" style="margin-top:16px">
+  <div class="grid cols-2 section">
     <div class="card"><h3>Predicted flood classes, observed flood and reports</h3><div id="map-left" class="small-map" style="height:460px"></div>
       <div class="legend" style="display:flex;gap:12px;flex-wrap:wrap" id="legend-left"></div></div>
     <div class="card"><h3>Hits, misses and false alarms</h3><div id="map-right" class="small-map" style="height:460px"></div>
       <div class="legend" id="legend-right"></div></div>
   </div>
-  <div class="card" style="margin-top:16px"><h3>How to read this</h3>
+  <div class="card section"><h3>How to read this</h3>
     <p id="notes" class="lead" style="margin:0"></p></div>
 </main>
 <script src="lib/leaflet/leaflet.js"></script>

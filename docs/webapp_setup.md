@@ -1,9 +1,10 @@
 # Phase 7: Running the web app
 
-The web app is four static pages (HTML, CSS, JavaScript with Leaflet) that talk to GeoServer with OGC standards, plus two small PHP files: `api/gs.php` forwards map and feature requests to GeoServer (so the browser sees one address and no CORS errors), and `api/wfst.php` guards WFS-T writes. XAMPP's Apache hosts it, with no Apache configuration changes. No database and no Node.js.
+The web app is five static pages (HTML, CSS, JavaScript with Leaflet) that talk to GeoServer with OGC standards, plus two small PHP files: `api/gs.php` forwards map and feature requests to GeoServer (so the browser sees one address and no CORS errors), and `api/wfst.php` guards WFS-T writes. XAMPP's Apache hosts it, with no Apache configuration changes. No database and no Node.js.
 
 | Page | What it does | OGC requests |
 | --- | --- | --- |
+| **September 2022** (`story.html`) | A scrolling story of the 2022 flood: as each section scrolls into view the map flies to the lake chain, Bellandur and the Outer Ring Road, Varthur, the radar result and the model's verdict | WMS (layers switch per section); WFS for the city outline |
 | **Risk map** (`index.html`) | Hazard layers with legends, overlays, base maps; click anywhere for flood and heat class plus the factor values | WMS GetMap (SLD styles), GetLegendGraphic; WFS GetFeature with an XML filter and a GML point; WMS GetFeatureInfo |
 | **Portfolio** (`portfolio.html`) | Upload a CSV, score every property, see it on the map, save it | WFS GetFeature per property (flood and heat zone in one request); **WFS-T Insert** in GML, sent through the PHP guard |
 | **Dashboard** (`dashboard.html`) | Share of loan value by risk level, charts, top High-risk loans, CSV download, delete | WFS GetFeature with `ogc:PropertyIsEqualTo` on `portfolio_id`; **WFS-T Delete** |

@@ -59,12 +59,12 @@ function render(gj) {
   const levels = ['Low', 'Medium', 'High'];
   const crore = (v) => Math.round(v / 1e5) / 100;      // rupees -> crore, 2 decimals
   Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
-  Chart.defaults.color = '#57606a';
+  Chart.defaults.color = '#4a423b';
   charts = [
     new Chart(el('donut'), {
       type: 'doughnut',
       data: { labels: levels, datasets: [{ data: levels.map((l) => crore(sum((p) => p.risk_level === l))),
-        backgroundColor: levels.map((l) => RISK_COLORS[l]), borderColor: '#fff', borderWidth: 2 }] },
+        backgroundColor: levels.map((l) => RISK_COLORS[l]), borderColor: '#fbf6ee', borderWidth: 3 }] },
       options: { maintainAspectRatio: false, cutout: '62%',
         plugins: { legend: { position: 'right' },
           tooltip: { callbacks: { label: (c) => ` ${c.label}: ₹${c.raw} Cr (${fmtPct((100 * c.raw * 1e7) / total)})` } } } },
@@ -72,11 +72,11 @@ function render(gj) {
     new Chart(el('bars'), {
       type: 'bar',
       data: { labels: levels.map((l) => `${l}`), datasets: [
-        { label: 'By flood class', data: [1, 2, 3].map((c) => crore(sum((p) => p.flood_class === c))), backgroundColor: '#2b7bb3', borderRadius: 4 },
-        { label: 'By heat class', data: [1, 2, 3].map((c) => crore(sum((p) => p.heat_class === c))), backgroundColor: '#e2412b', borderRadius: 4 },
+        { label: 'By flood class', data: [1, 2, 3].map((c) => crore(sum((p) => p.flood_class === c))), backgroundColor: '#12335b', borderRadius: 0 },
+        { label: 'By heat class', data: [1, 2, 3].map((c) => crore(sum((p) => p.heat_class === c))), backgroundColor: '#8c2131', borderRadius: 0 },
       ] },
       options: { maintainAspectRatio: false,
-        scales: { y: { title: { display: true, text: 'Loan value (₹ crore)' }, grid: { color: '#eaeef2' } }, x: { grid: { display: false } } },
+        scales: { y: { title: { display: true, text: 'Loan value (₹ crore)' }, grid: { color: '#e2d6c6' } }, x: { grid: { display: false } } },
         plugins: { tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ₹${c.raw} Cr` } } } },
     }),
   ];
