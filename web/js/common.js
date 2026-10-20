@@ -37,7 +37,7 @@ async function fitToCity(map) {
   }
 }
 
-const RISK_COLORS = { Low: '#4e8a5b', Medium: '#d39b2a', High: '#b23a2e', Unscored: '#9a9088' };
+const RISK_COLORS = { Low: '#1a9850', Medium: '#f39c12', High: '#d7301f', Unscored: '#8c959f' };
 const fmtInt = (n) => Number(n).toLocaleString('en-IN');
 const fmtCrore = (rupees) => `₹${(rupees / 1e7).toLocaleString('en-IN', { maximumFractionDigits: 1 })} Cr`;
 const fmtPct = (x) => `${x.toLocaleString('en-IN', { maximumFractionDigits: 1 })}%`;

@@ -25,7 +25,7 @@
             <Graphic>
               <Mark>
                 <WellKnownName>circle</WellKnownName>
-                <Fill><CssParameter name="fill">#4e8a5b</CssParameter></Fill>
+                <Fill><CssParameter name="fill">#1a9850</CssParameter></Fill>
                 <Stroke>
                   <CssParameter name="stroke">#ffffff</CssParameter>
                   <CssParameter name="stroke-width">1.2</CssParameter>
@@ -48,7 +48,7 @@
             <Graphic>
               <Mark>
                 <WellKnownName>circle</WellKnownName>
-                <Fill><CssParameter name="fill">#d39b2a</CssParameter></Fill>
+                <Fill><CssParameter name="fill">#f39c12</CssParameter></Fill>
                 <Stroke>
                   <CssParameter name="stroke">#ffffff</CssParameter>
                   <CssParameter name="stroke-width">1.2</CssParameter>
@@ -71,7 +71,7 @@
             <Graphic>
               <Mark>
                 <WellKnownName>circle</WellKnownName>
-                <Fill><CssParameter name="fill">#b23a2e</CssParameter></Fill>
+                <Fill><CssParameter name="fill">#d7301f</CssParameter></Fill>
                 <Stroke>
                   <CssParameter name="stroke">#ffffff</CssParameter>
                   <CssParameter name="stroke-width">1.2</CssParameter>
