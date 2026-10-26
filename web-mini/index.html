@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bengaluru Climate Risk Scanner</title>
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Bengaluru Climate Risk Scanner<small>Flood and extreme-heat screening for property loans</small></div>
+  <nav>
+    <a data-view="map" class="active">Risk map</a>
+    <a data-view="portfolio">Portfolio</a>
+    <a data-view="dashboard">Dashboard</a>
+    <a data-view="validation">Validation</a>
+  </nav>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <!-- Risk map -->
+    <section id="view-map">
+      <h2>Hazard layer</h2>
+      <label class="choice"><input type="radio" name="hazard" value="flood_class" checked> Flood classes</label>
+      <label class="choice"><input type="radio" name="hazard" value="flood_risk"> Flood risk index (1–5)</label>
+      <label class="choice"><input type="radio" name="hazard" value="heat_class"> Heat classes</label>
+      <label class="choice"><input type="radio" name="hazard" value="heat_risk"> Heat index (0–1)</label>
+      <div class="legend" id="legend-map"></div>
+      <h2>Overlays</h2>
+      <label class="choice"><input type="checkbox" name="overlay" value="lakes" checked> Lakes</label>
+      <label class="choice"><input type="checkbox" name="overlay" value="drains"> Drains and streams</label>
+      <label class="choice"><input type="checkbox" name="overlay" value="bbmp_boundary" checked> City boundary</label>
+      <label class="choice"><input type="checkbox" name="overlay" value="properties"> Saved properties</label>
+      <h2>How to use</h2>
+      <p>Click anywhere in the city to see its flood and heat class and the factors behind them.</p>
+      <p class="hint">Maps are drawn by GeoServer (WMS + SLD). A click sends a WFS query with a GML point and a WMS GetFeatureInfo.</p>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="view-portfolio" hidden>
+      <h2>1. Upload a portfolio</h2>
+      <label class="dropzone" id="dropzone"><input type="file" id="file" accept=".csv" hidden>
+        <strong>Drop a CSV here</strong> or click to choose<br>
+        <span class="hint">Columns: property_id, latitude, longitude, loan_value</span></label>
+      <div class="row"><button class="btn" id="sample">Use the sample portfolio</button></div>
+      <h2>2. Score with WFS</h2>
+      <div class="progress"><div id="bar"></div></div>
+      <p class="hint" id="progress">Waiting for a file.</p>
+      <h2>3. Save with WFS-T</h2>
+      <div class="row"><button class="btn primary" id="save" disabled>Save to GeoServer</button>
+        <a class="btn" id="to-dash" hidden>Open dashboard →</a></div>
+      <div class="status" id="status-portfolio" hidden></div>
+      <h2>Results</h2>
+      <div id="summary" class="hint">No properties scored yet.</div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="view-dashboard" hidden>
+      <h2>Saved portfolio</h2>
+      <div class="row"><select id="portfolios"><option>Loading…</option></select>
+        <button class="btn danger" id="delete" disabled>Delete</button></div>
+      <div class="status" id="status-dashboard" hidden></div>
+      <div class="kpis" id="kpis"></div>
+      <h2>Loan value by risk level</h2>
+      <div class="chart"><canvas id="donut"></canvas></div>
+      <h2>Loan value by flood and heat class</h2>
+      <div class="chart"><canvas id="bars"></canvas></div>
+      <h2>Largest High-risk loans</h2>
+      <div id="top" class="hint"></div>
+    </section>
+
+    <!-- Validation -->
+    <section id="view-validation" hidden>
+      <h2>Model vs the September 2022 flood</h2>
+      <div class="kpis" id="val-kpis"></div>
+      <h2>Show on the map</h2>
+      <label class="choice"><input type="radio" name="valmode" value="prediction" checked> Predicted classes + observed flood</label>
+      <label class="choice"><input type="radio" name="valmode" value="hits"> Hits, misses and false alarms</label>
+      <div class="legend" id="legend-validation"></div>
+      <h2>How to read this</h2>
+      <p id="val-notes"></p>
+    </section>
+  </aside>
+  <div id="map"></div>
+</div>
+
+<script src="lib/leaflet/leaflet.js"></script>
+<script src="lib/papaparse.min.js"></script>
+<script src="lib/chart.umd.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

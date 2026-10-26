@@ -31,3 +31,7 @@ Thumbs.db
 
 # Web app secret (WFS-T password)
 web/api/config.php
+
+# Mini web app secret
+web-mini/api/config.php
+web-mini/sample_portfolio.csv
